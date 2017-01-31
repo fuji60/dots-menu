@@ -11,7 +11,6 @@
       <h1>dots-menu</h1>
 <style>
 .dots-menu {
-  /*border: 1px solid #CCC;*/
   padding: 10px;
   position: relative;
 }
@@ -32,10 +31,12 @@
   position: absolute;
   top: 0;
   right: 0;
-  /*border: 1px solid #ccc;*/
   height: 20px;
   width: 20px;
+  vertical-align: middle;
   text-align: center;
+  cursor: pointer;
+  -webkit-tap-highlight-color:rgba(0,0,0,.1);
 }
 .dots-menu--content {
     padding: 5px 10px;
@@ -112,22 +113,21 @@
       <div class="x-list-menu-close-cover dots-menu--cover"></div>
       <div class="x-dots-menu--btn dots-menu--btn"><span class="dots-menu--btn-icon">…</span></div>
       <div class="x-list-menu--content dots-menu--content">
-        <div class="x-list-menu--bg dots-menu--content-bg"></div>
+        <div class="x-dots-menu--content-bg dots-menu--content-bg"></div>
         <div class="x-list-menu--text-block dots-menu--content-main">
-          <a class="x-disable dots-menu--content-target" href="javascript:void(0);">お気に入りに追加する</a>
-          <a class="x-disable dots-menu--content-target" href="javascript:void(0);">お気に入りに追加する</a>
+          <a class="dots-menu--content-target" href="javascript:void(0);">お気に入りに追加する</a>
+          <a class="dots-menu--content-target" href="javascript:void(0);">お気に入りに追加する</a>
         </div>
       </div>
     </div>
 <script>
 $(function(){
-  $(".x-dots-menu--btn").on("click",function(){ 
-    if($(this).next().hasClass('anime')){
-      $(this).next().removeClass('anime');
-      $(this).next().addClass('anime-re');
+  $(".x-dots-menu--btn").on("click",function(){
+    var $animeTarget = $(this).next();
+    if($animeTarget.hasClass('anime')){
+      $animeTarget.removeClass('anime').addClass('anime-re');
     } else {
-      $(this).next().addClass('anime');
-      $(this).next().removeClass('anime-re');
+      $animeTarget.addClass('anime').removeClass('anime-re');
     }
   });
 })
