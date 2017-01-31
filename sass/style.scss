@@ -120,3 +120,46 @@ body {
 footer {
 	text-align: center;
 }
+
+/* */
+@include keyframes(scaleUp) {
+  0% {
+    @include transform(scale(1.2));
+    @include transform(rotate(0));
+    opacity:0;
+  }
+  25% {
+  	opacity:1;
+  }
+  100% {
+    @include transform(scale(1.0));
+    @include transform(rotate(-360deg));
+    opacity:1;
+  }
+}
+@include keyframes(fadeInOpacity0-1-1-0) {
+    0% {opacity: 0;}
+    10% {opacity: 1;}
+    90% {opacity: 1;}
+    100% {opacity: 0;}
+}
+@include keyframes(fadeInOpacityScale0-1) {
+    0% {
+        opacity: 0;
+        @include transform(scale(0));
+    }
+    100% {
+        opacity: 1;
+        @include transform(scale(1));
+    }
+}
+@include keyframes(fadeInOpacityScale1-0) {
+    0% {
+        opacity: 1;
+        @include transform(scale(1));
+    }
+    100% {
+        opacity: 0;
+        @include transform(scale(0));
+    }
+}

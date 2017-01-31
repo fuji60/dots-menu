@@ -3,7 +3,7 @@
   <head>
   <meta charset="utf-8">
   <title>dots-menu</title>
-  <script src="js/jquery-2.1.1.min.js.js"></script>
+  <script src="js/jquery-2.1.1.min.js"></script>
   <link href="css/style.css" rel="stylesheet" type="text/css">
   </head>
   <body>
@@ -11,7 +11,7 @@
       <h1>dots-menu</h1>
 <style>
 .dots-menu {
-  border: 1px solid #CCC;
+  /*border: 1px solid #CCC;*/
   padding: 10px;
   position: relative;
 }
@@ -32,13 +32,13 @@
   position: absolute;
   top: 0;
   right: 0;
-  border: 1px solid #ccc;
+  /*border: 1px solid #ccc;*/
   height: 20px;
   width: 20px;
   text-align: center;
 }
 .dots-menu--content {
-    padding: 5px;
+    padding: 5px 10px;
     position: absolute;
     top: 20px;
     right: 0px;
@@ -51,8 +51,8 @@
 .dots-menu--content-bg {
     -webkit-transform-origin: 100% 0;
     transform-origin: 100% 0;
-    -webkit-transform: scale(1);
-    transform: scale(1);
+    -webkit-transform: scale(0);
+    transform: scale(0);
     opacity: 1;
     position: absolute;
     top: 0;
@@ -69,20 +69,48 @@
 .dots-menu--content-main {
   -webkit-transform-origin: 100% 0;
     transform-origin: 100% 0;
-    -webkit-transform: scale(1);
-    transform: scale(1);
+    -webkit-transform: scale(0);
+    transform: scale(0);
     position: relative;
     z-index: 30;
     opacity: 1;
 }
+.dots-menu--content-main a {
+  color: #444;
+  text-decoration: none;
+}
+.dots-menu--content-main a:hover {
+  color: #444;
+  text-decoration: underline;
+}
 .dots-menu--content-target {
   display: block;
+}
+.dots-menu--content.anime .dots-menu--content-main {
+    animation: fadeInOpacityScale0-1 .3s forwards;
+    -moz-animation: fadeInOpacityScale0-1 .3s forwards;
+    -webkit-animation: fadeInOpacityScale0-1 .3s forwards;
+}
+.dots-menu--content.anime .dots-menu--content-bg {
+  animation: fadeInOpacityScale0-1 .3s forwards;
+    -moz-animation: fadeInOpacityScale0-1 .3s forwards;
+    -webkit-animation: fadeInOpacityScale0-1 .3s forwards;
+}
+.dots-menu--content.anime-re .dots-menu--content-main {
+    animation: fadeInOpacityScale1-0 .3s forwards;
+    -moz-animation: fadeInOpacityScale1-0 .3s forwards;
+    -webkit-animation: fadeInOpacityScale1-0 .3s forwards;
+}
+.dots-menu--content.anime-re .dots-menu--content-bg {
+  animation: fadeInOpacityScale1-0 .3s forwards;
+    -moz-animation: fadeInOpacityScale1-0 .3s forwards;
+    -webkit-animation: fadeInOpacityScale1-0 .3s forwards;
 }
 </style>
 
     <div class="dots-menu">
       <div class="x-list-menu-close-cover dots-menu--cover"></div>
-      <div class="x-list-menu--btn dots-menu--btn"><span class="dots-menu--btn-icon">…</span></div>
+      <div class="x-dots-menu--btn dots-menu--btn"><span class="dots-menu--btn-icon">…</span></div>
       <div class="x-list-menu--content dots-menu--content">
         <div class="x-list-menu--bg dots-menu--content-bg"></div>
         <div class="x-list-menu--text-block dots-menu--content-main">
@@ -91,7 +119,19 @@
         </div>
       </div>
     </div>
-
+<script>
+$(function(){
+  $(".x-dots-menu--btn").on("click",function(){ 
+    if($(this).next().hasClass('anime')){
+      $(this).next().removeClass('anime');
+      $(this).next().addClass('anime-re');
+    } else {
+      $(this).next().addClass('anime');
+      $(this).next().removeClass('anime-re');
+    }
+  });
+})
+</script>
     </div>
   </body>
   <footer>
