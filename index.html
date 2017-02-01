@@ -9,127 +9,52 @@
   <body>
     <div class="wrapper">
       <h1>dots-menu</h1>
-<style>
-.dots-menu {
-  padding: 10px;
-  position: relative;
-}
-.dots-menu--cover {
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  background-color: rgba(0,0,0,.3);
-  display: none;
-  z-index: 10;
-  display: block;
 
-  display: none;
-}
-.dots-menu--btn {
-  position: absolute;
-  top: 0;
-  right: 0;
-  height: 20px;
-  width: 20px;
-  vertical-align: middle;
-  text-align: center;
-  cursor: pointer;
-  -webkit-tap-highlight-color:rgba(0,0,0,.1);
-}
-.dots-menu--content {
-    padding: 5px 10px;
-    position: absolute;
-    top: 20px;
-    right: 0px;
-    background-color: transparent;
-    z-index: 10;
-    font-size: 12px;
-    line-height: 2em;
-    font-weight: bold;
-}
-.dots-menu--content-bg {
-    -webkit-transform-origin: 100% 0;
-    transform-origin: 100% 0;
-    -webkit-transform: scale(0);
-    transform: scale(0);
-    opacity: 1;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 20;
-    width: 100%;
-    height: 100%;
-    background-color: #FFF;
-    -webkit-box-shadow: 2px 2px 6px 3px rgba(0,0,0,0.2);
-    -moz-box-shadow: 2px 2px 6px 3px rgba(0,0,0,0.2);
-    box-shadow: 2px 2px 6px 3px rgba(0,0,0,0.2);
-    border-radius: 2px;
-}
-.dots-menu--content-main {
-  -webkit-transform-origin: 100% 0;
-    transform-origin: 100% 0;
-    -webkit-transform: scale(0);
-    transform: scale(0);
-    position: relative;
-    z-index: 30;
-    opacity: 1;
-}
-.dots-menu--content-main a {
-  color: #444;
-  text-decoration: none;
-}
-.dots-menu--content-main a:hover {
-  color: #444;
-  text-decoration: underline;
-}
-.dots-menu--content-target {
-  display: block;
-}
-.dots-menu--content.anime .dots-menu--content-main {
-    animation: fadeInOpacityScale0-1 .3s forwards;
-    -moz-animation: fadeInOpacityScale0-1 .3s forwards;
-    -webkit-animation: fadeInOpacityScale0-1 .3s forwards;
-}
-.dots-menu--content.anime .dots-menu--content-bg {
-  animation: fadeInOpacityScale0-1 .3s forwards;
-    -moz-animation: fadeInOpacityScale0-1 .3s forwards;
-    -webkit-animation: fadeInOpacityScale0-1 .3s forwards;
-}
-.dots-menu--content.anime-re .dots-menu--content-main {
-    animation: fadeInOpacityScale1-0 .3s forwards;
-    -moz-animation: fadeInOpacityScale1-0 .3s forwards;
-    -webkit-animation: fadeInOpacityScale1-0 .3s forwards;
-}
-.dots-menu--content.anime-re .dots-menu--content-bg {
-  animation: fadeInOpacityScale1-0 .3s forwards;
-    -moz-animation: fadeInOpacityScale1-0 .3s forwards;
-    -webkit-animation: fadeInOpacityScale1-0 .3s forwards;
-}
-</style>
 
     <div class="dots-menu">
       <div class="x-list-menu-close-cover dots-menu--cover"></div>
       <div class="x-dots-menu--btn dots-menu--btn"><span class="dots-menu--btn-icon">…</span></div>
       <div class="x-list-menu--content dots-menu--content">
-        <div class="x-dots-menu--content-bg dots-menu--content-bg"></div>
+        <div class="x-dots-menu--content-bg dots-menu--content-bg"></div><!--カバー-->
         <div class="x-list-menu--text-block dots-menu--content-main">
           <a class="dots-menu--content-target" href="javascript:void(0);">お気に入りに追加する</a>
           <a class="dots-menu--content-target" href="javascript:void(0);">お気に入りに追加する</a>
         </div>
       </div>
     </div>
+    <div class="dots-menu">
+      <div class="x-list-menu-close-cover dots-menu--cover"></div>
+        <a class="x-star href="javascript:void(0);">
+          <div class="x-star--target">★</div>
+          <div class="x-star--target__on" style="color:red;">★</div>
+          <div class="baloon__default">お気に入りに追加しました</div>
+        </a>
+    </div>
+<style>
+
+</style>
+
+
 <script>
 $(function(){
+  var $target;
   $(".x-dots-menu--btn").on("click",function(){
+    $target = $(this);
     var $animeTarget = $(this).next();
     if($animeTarget.hasClass('anime')){
       $animeTarget.removeClass('anime').addClass('anime-re');
+      //$(".dots-menu--cover").hide();
     } else {
       $animeTarget.addClass('anime').removeClass('anime-re');
+      //$(".dots-menu--cover").show();
     }
   });
+/*  $(".dots-menu--cover").on("click tap",function(){
+    $target.trigger('click');
+  })*/
+  $(".x-star").on('click tap',function(){
+    $(".x-star--target__on").show();
+  })
 })
 </script>
     </div>
