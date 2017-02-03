@@ -128,7 +128,6 @@ footer {
   position: relative;
   height: 60px;
   border-top: 1px solid #CCC;
-  overflow: hidden;
   .dots-menu--cover {
 	  width: 100%;
 	  height: 100%;
@@ -200,19 +199,19 @@ footer {
 
 @include keyframes(scaleUp) {
   0% {
-    @include transform(scale(1.2));
-    @include transform(rotate(0));
-    opacity:0;
+    @include transform(scale(1));
+    opacity:1;
   }
   25% {
   	opacity:1;
   }
   100% {
-    @include transform(scale(1.0));
-    @include transform(rotate(-360deg));
-    opacity:1;
+    @include transform(scale(2));
+    opacity:0;
   }
 }
+
+
 @include keyframes(fadeInOpacity0-1-1-0) {
     0% {opacity: 0;}
     10% {opacity: 1;}
@@ -300,6 +299,43 @@ footer {
   top: 0;
   right: 0;
 }
-.x-star--target__on{
-  display: none;
+.x-star .x-star--target__on {
+  opacity: 0;
+  @include transform(scale(1));
+}
+.x-star.anime .x-star--target__on{
+  @include animation(scaleUp 1s forwards);
+}
+
+/* baloon */
+
+@include keyframes(baloonOpacity) {
+    0% {
+        opacity: 0;
+        top: 38px;
+    }
+
+    10% {
+        opacity: 1;
+        top: 35px;
+    }
+
+    90% {
+        opacity: 1;
+        top: 35px;
+    }
+
+    100% {
+        opacity: 0;
+        top: 38px;
+    }
+}
+.baloon__default {
+	opacity:0;
+}
+.baloon__default.anime {
+    display: block;
+    animation: baloonOpacity 4s;
+    -moz-animation: baloonOpacity 4s;
+    -webkit-animation: baloonOpacity 4s;
 }

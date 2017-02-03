@@ -24,7 +24,7 @@
     </div>
     <div class="dots-menu">
       <div class="x-list-menu-close-cover dots-menu--cover"></div>
-        <a class="x-star href="javascript:void(0);">
+        <a class="x-star" href="javascript:void(0);">
           <div class="x-star--target">★</div>
           <div class="x-star--target__on" style="color:red;">★</div>
           <div class="baloon__default">お気に入りに追加しました</div>
@@ -53,9 +53,14 @@ $(function(){
     $target.trigger('click');
   })*/
   $(".x-star").on('click tap',function(){
-    $(".x-star--target__on").show();
+    $(this).addClass("anime").delay(1000).queue(function() {
+        $(this).removeClass('anime').dequeue();
+    });
+    $(this).find(".baloon__default").addClass("anime").delay(5000).queue(function() {
+        $(this).removeClass('anime').dequeue();
+    });
   })
-})
+});
 </script>
     </div>
   </body>
